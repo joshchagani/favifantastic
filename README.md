@@ -1,0 +1,2 @@
+# favifantastic
+Dynamically changing favicon
