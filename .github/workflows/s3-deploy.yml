@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    defaults: 
-      run:
-        working-directory: ./client
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,16 +24,13 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Test App
-        run: npm run test
+        run: npm install
 
       - name: Build App
         run: npm run build
 
       - name: Deploy to S3
-        run: aws s3 sync ./build/ ${{ secrets.AWS_BUCKET  }}
+        run: aws s3 sync ./dist/ ${{ secrets.AWS_BUCKET  }}
 
       - name: Cloudflare Purge Cache
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
