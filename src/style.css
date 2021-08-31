@@ -12,6 +12,11 @@ html[data-theme='light'] {
 	--bg-color: 0 0% 100%;
 }
 
+html[data-theme='dark'] {
+	--text-color: 0 0% 100%;
+	--bg-color: 0 0% 0%;
+}
+
 html {
 	background: hsl(var(--bg-color));
 	font-family: var(--font-family);
@@ -20,7 +25,6 @@ html {
 
 body {
 	display: block;
-	padding-block-start: calc(var(--emoji-size) + 1.6rem);
 	font-size: 3.6rem;
 }
 
@@ -45,6 +49,7 @@ button {
 	padding: 0.4em;
 	border-radius: 0.5em;
 	transition: box-shadow 500ms ease;
+	inline-size: 100%;
 }
 
 button:hover {
@@ -52,6 +57,11 @@ button:hover {
 		0.5rem 0.5rem 0px 0px hsl(var(--text-color)),
 		0.75rem 0.75rem 0px 0px hsl(var(--text-color)),
 		1rem 1rem 0px 0px hsl(var(--text-color));
+}
+
+.section-flex {
+	display: flex;
+	flex-direction: column;
 }
 
 .canvas-grid {
@@ -69,11 +79,10 @@ button:hover {
 }
 
 .pointing {
-	display: block;
-	position: fixed;
-	top: 0;
-	left: 6rem;
+	display: inline-block;
 	font-size: var(--emoji-size);
+	align-self: center;
+	padding-block-end: min(5vw, calc(var(--emoji-size) - 1rem));
 	animation: bounce 500ms infinite ease-in-out alternate;
 }
 
@@ -81,6 +90,12 @@ button:hover {
 	:root {
 		--text-color: 0 0% 100%;
 		--bg-color: 0 0% 0%;
+	}
+}
+
+@media screen and (min-width: 44rem) {
+	button {
+		inline-size: 48%;
 	}
 }
 
