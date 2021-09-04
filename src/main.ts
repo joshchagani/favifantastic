@@ -58,6 +58,7 @@ const canvas = document.createElement('canvas')
 const ctx = canvas.getContext('2d')!
 const p = new Path2D(svgPath)
 
+// Scaling down by 1/4 since the original SVG was created at 1024x1024
 canvas.width = 256
 canvas.height = 256
 ctx.scale(0.25, 0.25)
