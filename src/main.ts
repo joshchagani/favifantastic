@@ -84,12 +84,14 @@ function draw() {
 	ctx.fillStyle = `rgba(${colorFill}, ${opacity})`
 	ctx.fill(p)
 	ctx.closePath()
+}
+
+function writeToFavicon() {
 	const data = canvas.toDataURL()
 	faviconLink.href = data
 }
 
 toggleMode()
-setInterval(draw, 200)
 
 toggleThemeButton.addEventListener('click', function () {
 	if (darkMode) {
@@ -117,3 +119,6 @@ toggleCanvasButton.addEventListener('click', function () {
 		canvasWrapper.setAttribute('data-canvas', 'open')
 	}
 })
+
+setInterval(() => window.requestAnimationFrame(draw), 100)
+setInterval(writeToFavicon, 150)
